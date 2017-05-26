@@ -11,11 +11,11 @@ export class DogsComponent implements OnInit {
   selectedDog: Dog;
   dogs: Dog[];
   constructor(private dogService: DogService) { }
-  getHeroes(): void {
+  getDogs(): void {
     this.dogService.getDogs().then(dogs => this.dogs = dogs);
   }
   ngOnInit(): void {
-    this.getHeroes();
+    this.getDogs();
   }
   onSelect(dog: Dog): void {
     this.selectedDog = dog;
