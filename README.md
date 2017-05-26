@@ -1,5 +1,4 @@
 ## Angular basics
-----------
 ### Repositorio base para el taller de conceptos básicos de angular.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.3.
 
@@ -16,5 +15,20 @@ __Primero asegúrate de tener los prerrequisitos:__
 
 **Si aparece el mensaje:** "App Works" ya estamos listas para crear nuestro primer componente :ok_woman:
 
+**Archivos incluidos en el repositorio**
+El repositorio tiene incluido un servicio _dog.service.ts_ este nos proporcionará lo necesario para avanzar en el componente, así como la clase _dog.ts_ para la estructura de datos.
 
-> Written with [StackEdit](https://stackedit.io/).
+**Generar dogs.component con Angular CLI:**
+1. Ejecuta en la terminal `ng g component dogs`, esto generará una subcarpeta con los archivos necesarios.
+2. En el archivo _dogs.component.ts_ podremos ver la estructura básica de un componente, esto lo genera Angular CLI.
+3. Colocaremos los import necesarios
+- `import { Dog } from '../dog';`
+- `import { DogService } from '../dog.service';`
+4. En el constructor definimos una variable privada de tipo **Dogservice** `private dogService: DogService`
+5. Realizamos el método que hará el resolve a la promesa que devuelve el llamado a `GetDogs()` (este es el método del servicio)
+```
+getHeroes(): void {
+    this.dogService.getDogs().then(dogs => this.dogs = dogs);
+  }
+```
+
