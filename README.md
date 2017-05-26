@@ -25,10 +25,14 @@ El repositorio tiene incluido un servicio _dog.service.ts_ este nos proporcionar
 - `import { Dog } from '../dog';`
 - `import { DogService } from '../dog.service';`
 4. En el constructor definimos una variable privada de tipo **Dogservice** `private dogService: DogService`
+5. El la clase definimos las variables que utilizaremos
+- `selectedDog: Dog;` _esta variable tipo Dog almacenará la selección del usuario_
+- `dogs: Dog[];` _esta variabe tipo array Dog almacenará los datos resultantes de la promesa de servicio DogService_
 5. Realizamos el método que hará el resolve a la promesa que devuelve el llamado a `GetDogs()` (este es el método del servicio)
 ```
-getHeroes(): void {
+getDogs(): void {
     this.dogService.getDogs().then(dogs => this.dogs = dogs);
   }
 ```
+6. Definimos el ApponInit en void e nvocamos el método de la clase _getDogs_
 
