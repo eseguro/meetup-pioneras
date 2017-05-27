@@ -27,7 +27,7 @@ __Primero asegúrate de tener los prerrequisitos:__
 import { Dog } from '../dog';
 import { DogService } from '../dog.service';
 ```
-5. En el constructor definimos una variable privada de tipo DogService 
+5. En el constructor definimos un parámetro privado de tipo DogService 
 ```typescript 
 private dogService: DogService
 ```
