@@ -9,11 +9,11 @@ __Primero asegúrate de tener los prerrequisitos:__
  
 **Si todo está correcto:**
  1. Clona o descarga este repositorio
- 2. En la terminal ejecuta `npm install`
- 3. Por último, levanta el servidor con `ng serve -o`
- 4. Abre el navegador en la dirección http://localhost:4200/
+ 2. En la terminal navega a la carpeta donde quedo el proyecto ej. ($`cd Documents/meetup_pioneras`) 
+ 2. Dentro de la carpeta del repositorio ejecuta `$ npm install`
+ 3. Por último, levanta el servidor con $`ng serve -o`
 
-**Si aparece el mensaje:** "Dogs Angular basics" ya estamos listas para crear nuestro primer componente :ok_woman:
+**Se abrirá  el navegador y si aparece el mensaje:** "Dogs Angular basics" ya estamos listas para crear nuestro primer componente :ok_woman:
 
 **Archivos incluidos en el repositorio**
 El repositorio tiene incluido un servicio _dog.service.ts_, este nos proporcionará lo necesario para avanzar en el componente, así como la clase _dog.ts_ para la estructura de datos.
@@ -42,5 +42,17 @@ getDogs(): void {
     this.dogService.getDogs().then(dogs => this.dogs = dogs);
   }
 ```
-7. Definimos el ApponInit en void e nvocamos el método de la clase _getDogs_
-
+8. Indiquemos que  el:
+```typescript 
+ngOnInit()
+``` 
+va a retornar tipo void  y dentro del ngOnInit invocamos nuestro método;
+```typescript
+getDogs() 
+```
+9. En la clase definimos el método que almacenará el dog seleccionado por el usuario en nuesta variable `this.selectedDog`
+```typescript
+onSelect(dog: Dog): void {
+    this.selectedDog = dog;
+  }
+```
