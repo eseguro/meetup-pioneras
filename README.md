@@ -16,7 +16,7 @@ __Primero asegúrate de tener los prerrequisitos:__
 **Se abrirá  el navegador y si aparece el mensaje:** "Dogs Angular basics" ya estamos listas para crear nuestro primer componente :ok_woman:
 
 **Archivos incluidos en el repositorio**
-El repositorio tiene incluido un servicio _dog.service.ts_, este nos proporcionará lo necesario para avanzar en el componente, así como la clase _dog.ts_ para la estructura de datos.
+- El repositorio tiene incluido un servicio _dog.service.ts_, este nos proporcionará lo necesario para avanzar en el componente, así como la clase _dog.ts_ para la estructura de datos.
 
 **Generar dogs.component con Angular CLI:**
 1. En la terminal navega a la carpeta _src\app_ ej($`cd src`, $`cd app`)
@@ -55,4 +55,41 @@ getDogs()
 onSelect(dog: Dog): void {
     this.selectedDog = dog;
   }
+```
+
+10. En el archivo _dogs.component.html_ pegamos lo siguiente
+```html
+<div [ngClass]="selectedDog ? 'col-md-offset-1' : 'col-md-offset-3'">
+  <div [ngClass]="selectedDog ? 'col-md-6' : 'col-md-8'">
+    <div>
+      <a href="#" *ngFor="let dog of dogs; let isOdd=odd; let isEven=even;" [ngClass]="isOdd ? 'list-group-item': 'list-group-item list-group-item-success'"
+        (click)="onSelect(dog)">
+        <div class="media">
+          <div class="media-left">
+            <img alt="64x64" class="img-circle" data-src="holder.js/64x64" style="width: 64px; height: 64px;" data-holder-rendered="true"
+              src="{{dog.photoUrl}}">
+          </div>
+          <div class="media-body">
+            <h2 class="media-heading">{{dog.name}}</h2>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div *ngIf="selectedDog" class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{selectedDog.name}} Binding ejemplo</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group"><label>Id: </label>{{selectedDog.id}}</div>
+        <div class="form-group"><label>Raza: </label>{{selectedDog.breed}}</div>
+        <div class="form-group">
+          <label>Nombre: </label>
+          <input [(ngModel)]="selectedDog.name" placeholder="nombre" class="form-control" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 ```
