@@ -19,21 +19,28 @@ __Primero asegúrate de tener los prerrequisitos:__
 El repositorio tiene incluido un servicio _dog.service.ts_, este nos proporcionará lo necesario para avanzar en el componente, así como la clase _dog.ts_ para la estructura de datos.
 
 **Generar dogs.component con Angular CLI:**
-
-1. Ejecuta en la terminal `ng g component dogs`, esto generará una subcarpeta con los archivos necesarios.
-2. En el archivo _dogs.component.ts_ podremos ver la estructura básica de un componente, esto lo genera Angular CLI.
-3. Colocaremos los import necesarios
-- `import { Dog } from '../dog';`
-- `import { DogService } from '../dog.service';`
-4. En el constructor definimos una variable privada de tipo **Dogservice** `private dogService: DogService`
-5. El la clase definimos las variables que utilizaremos
-- `selectedDog: Dog;` _esta variable tipo Dog almacenará la selección del usuario_
-- `dogs: Dog[];` _esta variabe tipo array Dog almacenará los datos resultantes de la promesa de servicio DogService_
-5. Realizamos el método que hará el resolve a la promesa que devuelve el llamado a `GetDogs()` (este es el método del servicio)
+1. En la terminal navega a la carpeta _src\app_ ej($`cd src`, $`cd app`)
+2. Ejecuta en la terminal $`ng g component dogs`, esto generará una subcarpeta con los archivos necesarios.
+3. En el archivo _dogs.component.ts_ podremos ver la estructura básica de un componente, esto lo genera Angular CLI.
+4. Colocaremos los import necesarios
+```typescript 
+import { Dog } from '../dog';
+import { DogService } from '../dog.service';
 ```
+5. En el constructor definimos una variable privada de tipo DogService 
+```typescript 
+private dogService: DogService
+```
+6. En la clase definimos las variables que utilizaremos
+```typescript 
+selectedDog: Dog; //esta variable tipo Dog almacenará el dog que el usuario seleccione
+dogs: Dog[]; //esta variable tipo array Dog almacenará los datos resultantes de la promesa de servicio DogService
+```
+7. En la clase definimos el método que obtendrá los datos del método `GetDogs()` de nuestro servicio.
+```typescript 
 getDogs(): void {
     this.dogService.getDogs().then(dogs => this.dogs = dogs);
   }
 ```
-6. Definimos el ApponInit en void e nvocamos el método de la clase _getDogs_
+7. Definimos el ApponInit en void e nvocamos el método de la clase _getDogs_
 
